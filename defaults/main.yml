@@ -1,0 +1,6 @@
+---
+opensshserver_permitrootlogin: 'no'
+opensshserver_permitemptypasswords: 'no'
+opensshserver_passwordauthentication: 'no'
+opensshserver_gssapiauthentication: 'no'
+opensshserver_pubkeyauthentication: 'yes'

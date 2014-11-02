@@ -1,0 +1,30 @@
+---
+- name: install openssh server by apt
+  apt:
+    pkg: openssh-server
+    state: present
+  when: ansible_pkg_mgr == 'apt'
+
+- name: install openssh server by pacman
+  pacman:
+    name: openssh
+    state: present
+  when: ansible_pkg_mgr == 'pacman'
+
+- name: install openssh server by yum
+  yum:
+    name: openssh
+    state: present
+  when: ansible_pkg_mgr == 'yum'
+
+- name: install openssh server by portage
+  portage:
+    name: openssh
+    state: present
+  when: ansible_pkg_mgr == 'portage'
+
+- name: install openssh server by zypper
+  zypper:
+    name: openssh
+    state: present
+  when: ansible_pkg_mgr == 'zypper'

@@ -1,0 +1,47 @@
+---
+- include: install.yml
+
+- name: set service name
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution | lower }}.yml'
+        - '{{ ansible_os_family | lower }}.yml'
+        - default.yml
+      paths:
+        - vars
+
+- name: backup original openssh server configuration
+  command: /bin/cp --dereference --preserve sshd_config sshd_config.orig
+  args:
+    chdir: /etc/ssh
+    creates: sshd_config.orig
+
+- name: dump openssh server configuration
+  script: dump-sshd-config.py
+
+- name: configure openssh server
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+    state: present
+    validate: 'sshd -t -f %s'
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+  with_items:
+    - regexp: '(?i)^\s*permitrootlogin\s+(.*)$'
+      line: 'permitrootlogin {{ opensshserver_permitrootlogin }}'
+    - regexp: '(?i)^\s*permitemptypasswords\s+(.*)$'
+      line: 'permitemptypasswords {{ opensshserver_permitemptypasswords }}'
+    - regexp: '(?i)^\s*passwordauthentication\s+(.*)$'
+      line: 'passwordauthentication {{ opensshserver_passwordauthentication }}'
+    - regexp: '(?i)^\s*gssapiauthentication\s+(.*)$'
+      line: 'gssapiauthentication {{ opensshserver_gssapiauthentication }}'
+    - regexp: '(?i)^\s*pubkeyauthentication\s+(.*)$'
+      line: 'pubkeyauthentication {{ opensshserver_pubkeyauthentication }}'
+  notify: restart openssh server
+
+- meta: flush_handlers
