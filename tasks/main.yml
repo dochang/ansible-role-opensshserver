@@ -21,27 +21,26 @@
   script: dump-sshd-config.py
 
 - name: configure openssh server
-  lineinfile:
+  replace:
     dest: /etc/ssh/sshd_config
     owner: root
     group: root
     mode: 0644
     backup: yes
-    state: present
     validate: 'sshd -t -f %s'
     regexp: '{{ item.regexp }}'
-    line: '{{ item.line }}'
+    replace: '{{ item.replace }}'
   with_items:
     - regexp: '(?i)^\s*permitrootlogin\s+(.*)$'
-      line: 'permitrootlogin {{ opensshserver_permitrootlogin }}'
+      replace: 'permitrootlogin {{ opensshserver_permitrootlogin }}'
     - regexp: '(?i)^\s*permitemptypasswords\s+(.*)$'
-      line: 'permitemptypasswords {{ opensshserver_permitemptypasswords }}'
+      replace: 'permitemptypasswords {{ opensshserver_permitemptypasswords }}'
     - regexp: '(?i)^\s*passwordauthentication\s+(.*)$'
-      line: 'passwordauthentication {{ opensshserver_passwordauthentication }}'
+      replace: 'passwordauthentication {{ opensshserver_passwordauthentication }}'
     - regexp: '(?i)^\s*gssapiauthentication\s+(.*)$'
-      line: 'gssapiauthentication {{ opensshserver_gssapiauthentication }}'
+      replace: 'gssapiauthentication {{ opensshserver_gssapiauthentication }}'
     - regexp: '(?i)^\s*pubkeyauthentication\s+(.*)$'
-      line: 'pubkeyauthentication {{ opensshserver_pubkeyauthentication }}'
+      replace: 'pubkeyauthentication {{ opensshserver_pubkeyauthentication }}'
   notify: restart openssh server
 
 - meta: flush_handlers
