@@ -9,7 +9,7 @@
         - '{{ ansible_os_family | lower }}.yml'
         - default.yml
       paths:
-        - vars
+        - service
 
 - name: backup original openssh server configuration
   command: /bin/cp --dereference --preserve sshd_config sshd_config.orig
