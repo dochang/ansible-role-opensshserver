@@ -1,6 +1,8 @@
 Opensshserver
 =============
 
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-dochang.opensshserver-blue.svg)](https://galaxy.ansible.com/list#/roles/2085)
+
 An ansible role to install and configure OpenSSH server.
 
 Requirements
