@@ -2,7 +2,7 @@ Opensshserver
 =============
 
 [![Build Status](https://travis-ci.org/dochang/ansible-role-opensshserver.svg?branch=master)](https://travis-ci.org/dochang/ansible-role-opensshserver)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-dochang.opensshserver-blue.svg)](https://galaxy.ansible.com/list#/roles/2085)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-dochang.opensshserver-blue.svg)](https://galaxy.ansible.com/dochang/opensshserver/)
 
 An ansible role to install and configure OpenSSH server.
 
