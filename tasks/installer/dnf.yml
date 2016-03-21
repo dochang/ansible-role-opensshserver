@@ -1,0 +1,5 @@
+---
+- name: install openssh server
+  dnf:
+    name: '{{ opensshserver_package }}'
+    state: present

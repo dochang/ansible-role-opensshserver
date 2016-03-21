@@ -1,0 +1,3 @@
+---
+opensshserver_installer: '{{ ansible_pkg_mgr }}'
+opensshserver_package: openssh

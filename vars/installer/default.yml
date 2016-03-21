@@ -1,0 +1,3 @@
+---
+opensshserver_installer: default
+opensshserver_package: openssh

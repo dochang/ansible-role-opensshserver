@@ -1,0 +1,5 @@
+---
+- name: install openssh server
+  pacman:
+    name: '{{ opensshserver_package }}'
+    state: present

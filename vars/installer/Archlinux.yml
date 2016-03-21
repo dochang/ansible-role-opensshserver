@@ -1,0 +1,3 @@
+---
+opensshserver_installer: pacman
+opensshserver_package: openssh

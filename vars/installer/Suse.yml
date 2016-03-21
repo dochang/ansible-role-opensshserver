@@ -1,0 +1,3 @@
+---
+opensshserver_installer: zypper
+opensshserver_package: openssh

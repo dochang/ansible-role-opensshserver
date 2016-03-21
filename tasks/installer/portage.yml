@@ -1,0 +1,5 @@
+---
+- name: install openssh server
+  portage:
+    name: '{{ opensshserver_package }}'
+    state: present

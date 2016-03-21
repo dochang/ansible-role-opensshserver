@@ -1,0 +1,4 @@
+---
+- name: install openssh server
+  fail:
+    msg: 'Not supported.'

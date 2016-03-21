@@ -1,30 +1,21 @@
 ---
-- name: install openssh server by apt
-  apt:
-    name: openssh-server
-    state: present
-  when: ansible_pkg_mgr == 'apt'
+- include: 'installer/apt.yml'
+  when: 'opensshserver_installer == "apt"'
 
-- name: install openssh server by pacman
-  pacman:
-    name: openssh
-    state: present
-  when: ansible_pkg_mgr == 'pacman'
+- include: 'installer/pacman.yml'
+  when: 'opensshserver_installer == "pacman"'
 
-- name: install openssh server by yum
-  yum:
-    name: openssh
-    state: present
-  when: ansible_pkg_mgr == 'yum'
+- include: 'installer/zypper.yml'
+  when: 'opensshserver_installer == "zypper"'
 
-- name: install openssh server by portage
-  portage:
-    name: openssh
-    state: present
-  when: ansible_pkg_mgr == 'portage'
+- include: 'installer/dnf.yml'
+  when: 'opensshserver_installer == "dnf"'
 
-- name: install openssh server by zypper
-  zypper:
-    name: openssh
-    state: present
-  when: ansible_pkg_mgr == 'zypper'
+- include: 'installer/yum.yml'
+  when: 'opensshserver_installer == "yum"'
+
+- include: 'installer/portage.yml'
+  when: 'opensshserver_installer == "portage"'
+
+- include: 'installer/default.yml'
+  when: 'opensshserver_installer == "default"'
