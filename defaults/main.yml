@@ -1,5 +1,5 @@
 ---
-opensshserver_permitrootlogin: 'no'
+opensshserver_permitrootlogin: 'without-password'
 opensshserver_permitemptypasswords: 'no'
 opensshserver_passwordauthentication: 'no'
 opensshserver_gssapiauthentication: 'no'
