@@ -1,3 +1,4 @@
 ---
 opensshserver_installer: default
 opensshserver_package: openssh
+opensshserver_service: sshd

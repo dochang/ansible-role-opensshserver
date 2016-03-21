@@ -1,3 +1,4 @@
 ---
 opensshserver_installer: portage
 opensshserver_package: openssh
+opensshserver_service: sshd
