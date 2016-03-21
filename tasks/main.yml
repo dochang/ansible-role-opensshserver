@@ -35,36 +35,29 @@
         # [page]: https://groups.google.com/forum/#!topic/ansible-project/UQ_ArPEofFU
         - ../vars/service
 
-- name: backup original openssh server configuration
-  command: /bin/cp --dereference --preserve sshd_config sshd_config.orig
-  args:
-    chdir: /etc/ssh
-    creates: sshd_config.orig
-
-- name: dump openssh server configuration
-  script: dump-sshd-config.py
-
 - name: configure openssh server
-  replace:
+  lineinfile:
     dest: /etc/ssh/sshd_config
     owner: root
     group: root
-    mode: 0644
+    mode: '644'
     backup: yes
+    create: yes
     validate: 'sshd -t -f %s'
     regexp: '{{ item.regexp }}'
-    replace: '{{ item.replace }}'
+    line: '{{ item.line }}'
+    state: present
   with_items:
     - regexp: '(?i)^\s*permitrootlogin\s+(.*)$'
-      replace: 'permitrootlogin {{ opensshserver_permitrootlogin }}'
+      line: 'permitrootlogin {{ opensshserver_permitrootlogin }}'
     - regexp: '(?i)^\s*permitemptypasswords\s+(.*)$'
-      replace: 'permitemptypasswords {{ opensshserver_permitemptypasswords }}'
+      line: 'permitemptypasswords {{ opensshserver_permitemptypasswords }}'
     - regexp: '(?i)^\s*passwordauthentication\s+(.*)$'
-      replace: 'passwordauthentication {{ opensshserver_passwordauthentication }}'
+      line: 'passwordauthentication {{ opensshserver_passwordauthentication }}'
     - regexp: '(?i)^\s*gssapiauthentication\s+(.*)$'
-      replace: 'gssapiauthentication {{ opensshserver_gssapiauthentication }}'
+      line: 'gssapiauthentication {{ opensshserver_gssapiauthentication }}'
     - regexp: '(?i)^\s*pubkeyauthentication\s+(.*)$'
-      replace: 'pubkeyauthentication {{ opensshserver_pubkeyauthentication }}'
+      line: 'pubkeyauthentication {{ opensshserver_pubkeyauthentication }}'
   notify: restart openssh server
 
 - meta: flush_handlers
