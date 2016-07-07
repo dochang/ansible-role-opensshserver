@@ -31,16 +31,16 @@
     line: '{{ item.line }}'
     state: present
   with_items:
-    - regexp: '(?i)^\s*permitrootlogin\s+(.*)$'
-      line: 'permitrootlogin {{ opensshserver_permitrootlogin }}'
-    - regexp: '(?i)^\s*permitemptypasswords\s+(.*)$'
-      line: 'permitemptypasswords {{ opensshserver_permitemptypasswords }}'
-    - regexp: '(?i)^\s*passwordauthentication\s+(.*)$'
-      line: 'passwordauthentication {{ opensshserver_passwordauthentication }}'
-    - regexp: '(?i)^\s*gssapiauthentication\s+(.*)$'
-      line: 'gssapiauthentication {{ opensshserver_gssapiauthentication }}'
-    - regexp: '(?i)^\s*pubkeyauthentication\s+(.*)$'
-      line: 'pubkeyauthentication {{ opensshserver_pubkeyauthentication }}'
+    - regexp: '(?i)^\s*PermitRootLogin\s+(.*)$'
+      line: 'PermitRootLogin {{ opensshserver_permitrootlogin }}'
+    - regexp: '(?i)^\s*PermitEmptyPasswords\s+(.*)$'
+      line: 'PermitEmptyPasswords {{ opensshserver_permitemptypasswords }}'
+    - regexp: '(?i)^\s*PasswordAuthentication\s+(.*)$'
+      line: 'PasswordAuthentication {{ opensshserver_passwordauthentication }}'
+    - regexp: '(?i)^\s*GSSAPIAuthentication\s+(.*)$'
+      line: 'GSSAPIAuthentication {{ opensshserver_gssapiauthentication }}'
+    - regexp: '(?i)^\s*PubkeyAuthentication\s+(.*)$'
+      line: 'PubkeyAuthentication {{ opensshserver_pubkeyauthentication }}'
   notify: restart openssh server
 
 - meta: flush_handlers
