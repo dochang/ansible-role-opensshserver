@@ -1,5 +1,0 @@
----
-- name: install openssh server
-  zypper:
-    name: '{{ opensshserver_package }}'
-    state: present

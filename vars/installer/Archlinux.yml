@@ -1,4 +1,0 @@
----
-opensshserver_installer: pacman
-opensshserver_package: openssh
-opensshserver_service: sshd

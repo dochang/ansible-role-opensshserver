@@ -1,5 +1,0 @@
----
-- name: install openssh server
-  apt:
-    name: '{{ opensshserver_package }}'
-    state: present

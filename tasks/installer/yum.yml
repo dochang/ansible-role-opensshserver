@@ -1,5 +1,0 @@
----
-- name: install openssh server
-  yum:
-    name: '{{ opensshserver_package }}'
-    state: present

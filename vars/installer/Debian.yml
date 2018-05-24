@@ -1,4 +1,0 @@
----
-opensshserver_installer: apt
-opensshserver_package: openssh-server
-opensshserver_service: ssh

@@ -1,4 +1,0 @@
----
-opensshserver_installer: zypper
-opensshserver_package: openssh
-opensshserver_service: sshd
