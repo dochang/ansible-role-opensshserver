@@ -14,7 +14,7 @@ None
 Role Variables
 --------------
 
-  - `opensshserver_permitrootlogin` (default: `no`)
+  - `opensshserver_permitrootlogin` (default: `prohibit-password`)
   - `opensshserver_permitemptypasswords` (default: `no`)
   - `opensshserver_passwordauthentication` (default: `no`)
   - `opensshserver_gssapiauthentication` (default: `no`)

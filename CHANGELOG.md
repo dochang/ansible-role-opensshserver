@@ -2,6 +2,10 @@
 
 ## [Unreleased] ##
 
+### Changed ###
+
+  - default value of `opensshserver_permitrootlogin`
+
 ### Removed ###
 
   - install tasks
